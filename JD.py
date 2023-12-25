@@ -25,8 +25,9 @@ class JD(object):
         chrome_options.add_argument('--disable-gpu')
         # 设置屏幕器宽高
         chrome_options.add_argument("--window-size=1440,750");
+        chrome_path = "./chromedriver_win32/chromedriver.exe"  # 请根据实际情况修改路径
+        self.dr = webdriver.Chrome(executable_path=chrome_path, options=chrome_options)
 
-        self.dr=webdriver.Chrome(executable_path=(r"./chromedriver_win32/chromedriver.exe"), chrome_options=chrome_options)
         self.dr.maximize_window();
         self.step=step;
         self.img_dir=img_dir
