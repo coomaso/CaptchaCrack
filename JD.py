@@ -16,7 +16,7 @@ class JD(object):
 
     def __init__(self,step,is_headless,down_img_count,img_dir="./images/jd/"):
          #设置
-        chrome_options = Options()
+        chrome_options = webdriver.ChromeOptions()
         # 无头模式启动
         if is_headless:
             chrome_options.add_argument('--headless')
