@@ -14,26 +14,6 @@ import operator
 
 class JD(object):
 
-
-理解了。下面是您的脚本的完整修改后的代码：
-
-python
-Copy code
-# 图像处理标准库
-from PIL import Image
-# web测试
-from selenium import webdriver
-# 鼠标操作
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.chrome.options import Options
-# 等待时间 产生随机数
-import time, random, datetime, os
-import math
-from functools import reduce
-import operator
-
-class JD(object):
-
     def __init__(self, step, is_headless, down_img_count, img_dir="./images/jd/"):
         # 设置
         chrome_options = Options()
