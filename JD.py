@@ -14,9 +14,29 @@ import operator
 
 class JD(object):
 
-    def __init__(self,step,is_headless,down_img_count,img_dir="./images/jd/"):
-         #设置
-        chrome_options = webdriver.ChromeOptions()
+
+理解了。下面是您的脚本的完整修改后的代码：
+
+python
+Copy code
+# 图像处理标准库
+from PIL import Image
+# web测试
+from selenium import webdriver
+# 鼠标操作
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.chrome.options import Options
+# 等待时间 产生随机数
+import time, random, datetime, os
+import math
+from functools import reduce
+import operator
+
+class JD(object):
+
+    def __init__(self, step, is_headless, down_img_count, img_dir="./images/jd/"):
+        # 设置
+        chrome_options = Options()
         # 无头模式启动
         if is_headless:
             chrome_options.add_argument('--headless')
@@ -24,15 +44,16 @@ class JD(object):
         # 谷歌文档提到需要加上这个属性来规避bug
         chrome_options.add_argument('--disable-gpu')
         # 设置屏幕器宽高
-        chrome_options.add_argument("--window-size=1440,750");
-        chrome_path = "./chromedriver_win32/chromedriver.exe"  # 请根据实际情况修改路径
-        self.dr = webdriver.Chrome(executable_path=chrome_path, options=chrome_options)
+        chrome_options.add_argument("--window-size=1440,750")
 
-        self.dr.maximize_window();
-        self.step=step;
-        self.img_dir=img_dir
-        self.down_dir=r"./images/jd4/";
-        self.down_img_count=down_img_count;
+        # 不再需要executable_path参数
+        self.dr = webdriver.Chrome(options=chrome_options)
+
+        self.dr.maximize_window()
+        self.step = step
+        self.img_dir = img_dir
+        self.down_dir = r"./images/jd4/"
+        self.down_img_count = down_img_count
 
     def is_pixel_equal(self, img1, img2, x, y):
         """
