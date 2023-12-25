@@ -139,19 +139,19 @@ class JD(object):
         self.dr.get(url)
         self.dr.implicitly_wait(4)
 
-        lotab=self.dr.find_elements_by_class_name("login-tab-r")
+        lotab=self.dr.find_elements_by_class_name("ant-tabs ant-tabs-top ant-tabs-small ant-tabs-line ant-tabs-no-animation")
         lotab[0].click();
         time.sleep(1);
-        name=self.dr.find_element_by_id("loginname");
+        name=self.dr.find_element_by_id("username");
         name.send_keys(username);
         time.sleep(1);
-        pwd=self.dr.find_element_by_id("nloginpwd");
+        pwd=self.dr.find_element_by_id("password");
         pwd.send_keys(password);
         time.sleep(1.3);
-        logbtn=self.dr.find_element_by_id("loginsubmit")
+        logbtn=self.dr.find_elements_by_class_name("ant-btn antd-pro-pages-user-login-components-login-index-submit ant-btn-primary ant-btn-lg")
         logbtn.click();
 
-        slide=self.dr.find_element_by_class_name("JDJRV-suspend-slide");
+        slide=self.dr.find_element_by_class_name("mask");
         if slide:
             print("进入滑块验证码流程");
             if self.step==1:
@@ -214,7 +214,7 @@ class JD(object):
     
     def dragging(self,tracks):
          # 按照行动轨迹先正向滑动，后反滑动
-        button = self.dr.find_element_by_class_name('JDJRV-slide-btn')
+        button = self.dr.find_element_by_class_name('verify-move-block')
         ActionChains(self.dr).click_and_hold(button).perform()
         tracks_backs=[-3,-3,-2,-2,-2,-2,-2,-1,-1,-1] #-20
 
@@ -235,8 +235,8 @@ class JD(object):
     
     def get_images(self,find_this_img=""):
         time.sleep(0.8)    
-        btn_refesh=self.dr.find_element_by_class_name('JDJRV-img-refresh')
-        img=self.dr.find_element_by_class_name('JDJRV-bigimg')
+        btn_refesh=self.dr.find_element_by_class_name('iconfont icon-refresh')
+        img=self.dr.find_element_by_class_name('backImg')
         location=img.location
         size=img.size
         left=location['x']
@@ -272,4 +272,4 @@ class JD(object):
 #参数2：是否启用chrome headless 模式、
 #参数3：登录滑块素材下载个数
 jd=JD(3,False,90);
-jd.autologin("https://passport.jd.com/new/login.aspx","用户名","密码")
+jd.autologin("https://zhcjsmz.sc.yichang.gov.cn/login/#/login","13487283013","13487283013") #用户名 密码
